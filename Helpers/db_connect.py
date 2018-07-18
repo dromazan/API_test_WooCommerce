@@ -13,8 +13,8 @@ class DBConnect:
         :return:
         """
 
-        host = 'localhost'
-        conn = pymysql.connect(host=host, port=3306, user='root', db=db)
+        host = '127.0.0.1'
+        conn = pymysql.connect(host=host, port=3306, user='root', passwd='mysql', db=db)
 
         return conn
 
@@ -43,6 +43,8 @@ class DBConnect:
 
         conn.close()  # closing db connection
         cur.close()  # closing cursor
+
+        return all_rows
 
     def update(self, db, query):
         """
