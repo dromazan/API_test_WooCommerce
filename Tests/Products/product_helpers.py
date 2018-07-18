@@ -12,13 +12,8 @@ class Product:
         self.data = {
             "name": f.pystr(1, 20),
             "type": random.choice(p_type),
-            "regular_price": '20.21', # str(f.pydecimal(2, 2, True)),
+            "regular_price": str(f.pydecimal(2, 2, True)),
             "description": f.text(),
             "short_description": f.text(),
-            "categories": [
-
-            ],
-            "images": [
-
-            ]
         }
+

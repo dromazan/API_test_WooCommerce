@@ -44,7 +44,7 @@ class DBConnect:
         conn.close()  # closing db connection
         cur.close()  # closing cursor
 
-        return all_rows
+        return result
 
     def update(self, db, query):
         """
