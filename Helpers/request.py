@@ -51,3 +51,17 @@ class Request:
         response_url = response.url
 
         return [response_code, response_body, response_url]
+
+    def delete(self, endpoint):
+        """
+
+        :param endpoint:
+        :return:
+        """
+        response = self.wcapi.delete(endpoint)
+
+        response_code = response.status_code
+        response_body = response.json()
+        response_url = response.url
+
+        return [response_code, response_body, response_url]

@@ -1,7 +1,7 @@
 from faker import Faker
-from Helpers.db_connect import DBConnect
+from Helpers.global_fixtures import request, db_connect
 import random
-from pytest import fixture
+from pytest import fixture, mark
 
 
 @fixture
@@ -18,9 +18,9 @@ def get_product_json():
     return data
 
 
-def get_random_product_id():
-
-    d = DBConnect()
+@fixture
+@mark.usefixture
+def get_random_product_id(db_connect):
 
     query = """
     SELECT ID
@@ -29,6 +29,6 @@ def get_random_product_id():
     ORDER BY RAND() LIMIT 1;
     """
 
-    id = d.select('wp43', query)
+    id = db_connect.select('wp43', query)
     return id[0][0]
 

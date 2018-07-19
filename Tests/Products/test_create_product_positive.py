@@ -1,15 +1,12 @@
-from Helpers.request import Request
-from Tests.Products.product_fixtures import *
+from product_fixtures import *
+from Helpers.global_fixtures import request, db_connect
 from Helpers.helpers import map_response
 import pytest
 from Helpers.assertions import assert_valid_schema
 
-request = Request()
-q = DBConnect()
-
 
 @pytest.mark.usefixtures
-def test_create_a_product(get_product_json):
+def test_create_a_product(get_product_json, request, db_connect):
     """
     http://woocommerce.github.io/woocommerce-rest-api-docs/#create-a-product
 
@@ -47,7 +44,7 @@ def test_create_a_product(get_product_json):
     """.format(resp_id)
 
     # executing select statement
-    qresp = q.select('wp43', query)
+    qresp = db_connect.select('wp43', query)
 
     db_name = qresp[0][0]
     db_price = qresp[0][2]

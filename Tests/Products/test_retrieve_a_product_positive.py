@@ -1,13 +1,13 @@
 from Helpers.assertions import assert_valid_schema
+from Helpers.global_fixtures import request, db_connect
 from product_fixtures import get_random_product_id
 from Helpers.request import Request
-from Helpers.db_connect import DBConnect
 
-request = Request()
-q = DBConnect()
+import pytest
 
 
-def test_retrieve_a_product():
+@pytest.mark.usefixtures
+def test_retrieve_a_product(get_random_product_id, request, db_connect):
     """
     http://woocommerce.github.io/woocommerce-rest-api-docs/#retrieve-a-product
 
@@ -19,8 +19,8 @@ def test_retrieve_a_product():
 
     """
 
-    # getting random product id
-    prod_id = get_random_product_id()
+    # get random product id
+    prod_id = get_random_product_id
 
     # getting product by id
     response = request.get('products/{}'.format(prod_id))
@@ -46,7 +46,7 @@ def test_retrieve_a_product():
         """.format(prod_id)
 
     # executing select statement
-    qresp = q.select('wp43', query)
+    qresp = db_connect.select('wp43', query)
 
     db_name = qresp[0][0]
     db_status = qresp[0][1]

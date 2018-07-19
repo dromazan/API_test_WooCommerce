@@ -1,13 +1,12 @@
-from Helpers.request import Request
-from Tests.Customers.customer_helpers import *
 from Helpers.helpers import map_response
 from Helpers.assertions import assert_valid_schema
+from customer_fixtures import get_customer_json
+from Helpers.global_fixtures import request, db_connect
+import pytest
 
-req = Request()
-q = DBConnect()
 
-
-def test_create_customer():
+@pytest.mark.usefixture
+def test_create_customer(get_customer_json, request, db_connect):
     """
     http://woocommerce.github.io/woocommerce-rest-api-docs/#create-a-customer
 
@@ -19,10 +18,10 @@ def test_create_customer():
     """
 
     # getting new customer json
-    customer = Customer().data
+    customer = get_customer_json
 
     # posting new customer
-    response = req.post('customers', customer)
+    response = request.post('customers', customer)
 
     status_code = response[0]
     response_body = response[1]
@@ -69,7 +68,7 @@ def test_create_customer():
             """.format(resp_id, fields)
 
     # executing select statement
-    qresp = q.select('wp43', query)
+    qresp = db_connect.select('wp43', query)
 
     nickname = qresp[0][1]
     first_name = qresp[1][1]
