@@ -1,0 +1,734 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "id": {
+      "$id": "/properties/id",
+      "type": "integer",
+      "title": "The Id Schema ",
+      "default": 0,
+      "examples": [
+        794
+      ]
+    },
+    "name": {
+      "$id": "/properties/name",
+      "type": "string",
+      "title": "The Name Schema ",
+      "default": "",
+      "examples": [
+        "Premium Quality"
+      ]
+    },
+    "slug": {
+      "$id": "/properties/slug",
+      "type": "string",
+      "title": "The Slug Schema ",
+      "default": "",
+      "examples": [
+        "premium-quality-19"
+      ]
+    },
+    "permalink": {
+      "$id": "/properties/permalink",
+      "type": "string",
+      "title": "The Permalink Schema ",
+      "default": "",
+      "examples": [
+        "https://example.com/product/premium-quality-19/"
+      ]
+    },
+    "date_created": {
+      "$id": "/properties/date_created",
+      "type": "string",
+      "title": "The Date_created Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-23T17:01:14"
+      ]
+    },
+    "date_created_gmt": {
+      "$id": "/properties/date_created_gmt",
+      "type": "string",
+      "title": "The Date_created_gmt Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-23T20:01:14"
+      ]
+    },
+    "date_modified": {
+      "$id": "/properties/date_modified",
+      "type": "string",
+      "title": "The Date_modified Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-23T17:01:14"
+      ]
+    },
+    "date_modified_gmt": {
+      "$id": "/properties/date_modified_gmt",
+      "type": "string",
+      "title": "The Date_modified_gmt Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-23T20:01:14"
+      ]
+    },
+    "type": {
+      "$id": "/properties/type",
+      "type": "string",
+      "title": "The Type Schema ",
+      "default": "",
+      "examples": [
+        "simple"
+      ]
+    },
+    "status": {
+      "$id": "/properties/status",
+      "type": "string",
+      "title": "The Status Schema ",
+      "default": "",
+      "examples": [
+        "publish"
+      ]
+    },
+    "featured": {
+      "$id": "/properties/featured",
+      "type": "boolean",
+      "title": "The Featured Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "catalog_visibility": {
+      "$id": "/properties/catalog_visibility",
+      "type": "string",
+      "title": "The Catalog_visibility Schema ",
+      "default": "",
+      "examples": [
+        "visible"
+      ]
+    },
+    "description": {
+      "$id": "/properties/description",
+      "type": "string",
+      "title": "The Description Schema ",
+      "default": "",
+      "examples": [
+        "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>\n"
+      ]
+    },
+    "short_description": {
+      "$id": "/properties/short_description",
+      "type": "string",
+      "title": "The Short_description Schema ",
+      "default": "",
+      "examples": [
+        "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>\n"
+      ]
+    },
+    "sku": {
+      "$id": "/properties/sku",
+      "type": "string",
+      "title": "The Sku Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "price": {
+      "$id": "/properties/price",
+      "type": "string",
+      "title": "The Price Schema ",
+      "default": "",
+      "examples": [
+        "21.99"
+      ]
+    },
+    "regular_price": {
+      "$id": "/properties/regular_price",
+      "type": "string",
+      "title": "The Regular_price Schema ",
+      "default": "",
+      "examples": [
+        "21.99"
+      ]
+    },
+    "sale_price": {
+      "$id": "/properties/sale_price",
+      "type": "string",
+      "title": "The Sale_price Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "date_on_sale_from": {
+      "$id": "/properties/date_on_sale_from",
+      "type": "null",
+      "title": "The Date_on_sale_from Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "date_on_sale_from_gmt": {
+      "$id": "/properties/date_on_sale_from_gmt",
+      "type": "null",
+      "title": "The Date_on_sale_from_gmt Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "date_on_sale_to": {
+      "$id": "/properties/date_on_sale_to",
+      "type": "null",
+      "title": "The Date_on_sale_to Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "date_on_sale_to_gmt": {
+      "$id": "/properties/date_on_sale_to_gmt",
+      "type": "null",
+      "title": "The Date_on_sale_to_gmt Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "price_html": {
+      "$id": "/properties/price_html",
+      "type": "string",
+      "title": "The Price_html Schema ",
+      "default": "",
+      "examples": [
+        "<span class=\"woocommerce-Price-amount amount\"><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>21.99</span>"
+      ]
+    },
+    "on_sale": {
+      "$id": "/properties/on_sale",
+      "type": "boolean",
+      "title": "The On_sale Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "purchasable": {
+      "$id": "/properties/purchasable",
+      "type": "boolean",
+      "title": "The Purchasable Schema ",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "total_sales": {
+      "$id": "/properties/total_sales",
+      "type": "integer",
+      "title": "The Total_sales Schema ",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "virtual": {
+      "$id": "/properties/virtual",
+      "type": "boolean",
+      "title": "The Virtual Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "downloadable": {
+      "$id": "/properties/downloadable",
+      "type": "boolean",
+      "title": "The Downloadable Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "downloads": {
+      "$id": "/properties/downloads",
+      "type": "array"
+    },
+    "download_limit": {
+      "$id": "/properties/download_limit",
+      "type": "integer",
+      "title": "The Download_limit Schema ",
+      "default": 0,
+      "examples": [
+        -1
+      ]
+    },
+    "download_expiry": {
+      "$id": "/properties/download_expiry",
+      "type": "integer",
+      "title": "The Download_expiry Schema ",
+      "default": 0,
+      "examples": [
+        -1
+      ]
+    },
+    "external_url": {
+      "$id": "/properties/external_url",
+      "type": "string",
+      "title": "The External_url Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "button_text": {
+      "$id": "/properties/button_text",
+      "type": "string",
+      "title": "The Button_text Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "tax_status": {
+      "$id": "/properties/tax_status",
+      "type": "string",
+      "title": "The Tax_status Schema ",
+      "default": "",
+      "examples": [
+        "taxable"
+      ]
+    },
+    "tax_class": {
+      "$id": "/properties/tax_class",
+      "type": "string",
+      "title": "The Tax_class Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "manage_stock": {
+      "$id": "/properties/manage_stock",
+      "type": "boolean",
+      "title": "The Manage_stock Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "stock_quantity": {
+      "$id": "/properties/stock_quantity",
+      "type": "null",
+      "title": "The Stock_quantity Schema ",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "in_stock": {
+      "$id": "/properties/in_stock",
+      "type": "boolean",
+      "title": "The In_stock Schema ",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "backorders": {
+      "$id": "/properties/backorders",
+      "type": "string",
+      "title": "The Backorders Schema ",
+      "default": "",
+      "examples": [
+        "no"
+      ]
+    },
+    "backorders_allowed": {
+      "$id": "/properties/backorders_allowed",
+      "type": "boolean",
+      "title": "The Backorders_allowed Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "backordered": {
+      "$id": "/properties/backordered",
+      "type": "boolean",
+      "title": "The Backordered Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "sold_individually": {
+      "$id": "/properties/sold_individually",
+      "type": "boolean",
+      "title": "The Sold_individually Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "weight": {
+      "$id": "/properties/weight",
+      "type": "string",
+      "title": "The Weight Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "dimensions": {
+      "$id": "/properties/dimensions",
+      "type": "object",
+      "properties": {
+        "length": {
+          "$id": "/properties/dimensions/properties/length",
+          "type": "string",
+          "title": "The Length Schema ",
+          "default": "",
+          "examples": [
+            ""
+          ]
+        },
+        "width": {
+          "$id": "/properties/dimensions/properties/width",
+          "type": "string",
+          "title": "The Width Schema ",
+          "default": "",
+          "examples": [
+            ""
+          ]
+        },
+        "height": {
+          "$id": "/properties/dimensions/properties/height",
+          "type": "string",
+          "title": "The Height Schema ",
+          "default": "",
+          "examples": [
+            ""
+          ]
+        }
+      }
+    },
+    "shipping_required": {
+      "$id": "/properties/shipping_required",
+      "type": "boolean",
+      "title": "The Shipping_required Schema ",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "shipping_taxable": {
+      "$id": "/properties/shipping_taxable",
+      "type": "boolean",
+      "title": "The Shipping_taxable Schema ",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "shipping_class": {
+      "$id": "/properties/shipping_class",
+      "type": "string",
+      "title": "The Shipping_class Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "shipping_class_id": {
+      "$id": "/properties/shipping_class_id",
+      "type": "integer",
+      "title": "The Shipping_class_id Schema ",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "reviews_allowed": {
+      "$id": "/properties/reviews_allowed",
+      "type": "boolean",
+      "title": "The Reviews_allowed Schema ",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "average_rating": {
+      "$id": "/properties/average_rating",
+      "type": "string",
+      "title": "The Average_rating Schema ",
+      "default": "",
+      "examples": [
+        "0.00"
+      ]
+    },
+    "rating_count": {
+      "$id": "/properties/rating_count",
+      "type": "integer",
+      "title": "The Rating_count Schema ",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "related_ids": {
+      "$id": "/properties/related_ids",
+      "type": "array",
+      "items": {
+        "$id": "/properties/related_ids/items",
+        "type": "integer",
+        "title": "The 0th Schema ",
+        "default": 0,
+        "examples": [
+          53,
+          40,
+          56,
+          479,
+          99
+        ]
+      }
+    },
+    "upsell_ids": {
+      "$id": "/properties/upsell_ids",
+      "type": "array"
+    },
+    "cross_sell_ids": {
+      "$id": "/properties/cross_sell_ids",
+      "type": "array"
+    },
+    "parent_id": {
+      "$id": "/properties/parent_id",
+      "type": "integer",
+      "title": "The Parent_id Schema ",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "purchase_note": {
+      "$id": "/properties/purchase_note",
+      "type": "string",
+      "title": "The Purchase_note Schema ",
+      "default": "",
+      "examples": [
+        ""
+      ]
+    },
+    "categories": {
+      "$id": "/properties/categories",
+      "type": "array",
+      "items": {
+        "$id": "/properties/categories/items",
+        "type": "object",
+        "properties": {
+          "id": {
+            "$id": "/properties/categories/items/properties/id",
+            "type": "integer",
+            "title": "The Id Schema ",
+            "default": 0,
+            "examples": [
+              9
+            ]
+          },
+          "name": {
+            "$id": "/properties/categories/items/properties/name",
+            "type": "string",
+            "title": "The Name Schema ",
+            "default": "",
+            "examples": [
+              "Clothing"
+            ]
+          },
+          "slug": {
+            "$id": "/properties/categories/items/properties/slug",
+            "type": "string",
+            "title": "The Slug Schema ",
+            "default": "",
+            "examples": [
+              "clothing"
+            ]
+          }
+        }
+      }
+    },
+    "tags": {
+      "$id": "/properties/tags",
+      "type": "array"
+    },
+    "images": {
+      "$id": "/properties/images",
+      "type": "array",
+      "items": {
+        "$id": "/properties/images/items",
+        "type": "object",
+        "properties": {
+          "id": {
+            "$id": "/properties/images/items/properties/id",
+            "type": "integer",
+            "title": "The Id Schema ",
+            "default": 0,
+            "examples": [
+              792
+            ]
+          },
+          "date_created": {
+            "$id": "/properties/images/items/properties/date_created",
+            "type": "string",
+            "title": "The Date_created Schema ",
+            "default": "",
+            "examples": [
+              "2017-03-23T14:01:13"
+            ]
+          },
+          "date_created_gmt": {
+            "$id": "/properties/images/items/properties/date_created_gmt",
+            "type": "string",
+            "title": "The Date_created_gmt Schema ",
+            "default": "",
+            "examples": [
+              "2017-03-23T20:01:13"
+            ]
+          },
+          "date_modified": {
+            "$id": "/properties/images/items/properties/date_modified",
+            "type": "string",
+            "title": "The Date_modified Schema ",
+            "default": "",
+            "examples": [
+              "2017-03-23T14:01:13"
+            ]
+          },
+          "date_modified_gmt": {
+            "$id": "/properties/images/items/properties/date_modified_gmt",
+            "type": "string",
+            "title": "The Date_modified_gmt Schema ",
+            "default": "",
+            "examples": [
+              "2017-03-23T20:01:13"
+            ]
+          },
+          "src": {
+            "$id": "/properties/images/items/properties/src",
+            "type": "string",
+            "title": "The Src Schema ",
+            "default": "",
+            "examples": [
+              "https://example.com/wp-content/uploads/2017/03/T_2_front-4.jpg"
+            ]
+          },
+          "name": {
+            "$id": "/properties/images/items/properties/name",
+            "type": "string",
+            "title": "The Name Schema ",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          },
+          "alt": {
+            "$id": "/properties/images/items/properties/alt",
+            "type": "string",
+            "title": "The Alt Schema ",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          },
+          "position": {
+            "$id": "/properties/images/items/properties/position",
+            "type": "integer",
+            "title": "The Position Schema ",
+            "default": 0,
+            "examples": [
+              0
+            ]
+          }
+        }
+      }
+    },
+    "attributes": {
+      "$id": "/properties/attributes",
+      "type": "array"
+    },
+    "default_attributes": {
+      "$id": "/properties/default_attributes",
+      "type": "array"
+    },
+    "variations": {
+      "$id": "/properties/variations",
+      "type": "array"
+    },
+    "grouped_products": {
+      "$id": "/properties/grouped_products",
+      "type": "array"
+    },
+    "menu_order": {
+      "$id": "/properties/menu_order",
+      "type": "integer",
+      "title": "The Menu_order Schema ",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "meta_data": {
+      "$id": "/properties/meta_data",
+      "type": "array"
+    },
+    "_links": {
+      "$id": "/properties/_links",
+      "type": "object",
+      "properties": {
+        "self": {
+          "$id": "/properties/_links/properties/self",
+          "type": "array",
+          "items": {
+            "$id": "/properties/_links/properties/self/items",
+            "type": "object",
+            "properties": {
+              "href": {
+                "$id": "/properties/_links/properties/self/items/properties/href",
+                "type": "string",
+                "title": "The Href Schema ",
+                "default": "",
+                "examples": [
+                  "https://example.com/wp-json/wc/v2/products/794"
+                ]
+              }
+            }
+          }
+        },
+        "collection": {
+          "$id": "/properties/_links/properties/collection",
+          "type": "array",
+          "items": {
+            "$id": "/properties/_links/properties/collection/items",
+            "type": "object",
+            "properties": {
+              "href": {
+                "$id": "/properties/_links/properties/collection/items/properties/href",
+                "type": "string",
+                "title": "The Href Schema ",
+                "default": "",
+                "examples": [
+                  "https://example.com/wp-json/wc/v2/products"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,373 @@
+{ "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "id": {
+      "$id": "/properties/id",
+      "type": "integer",
+      "title": "The Id Schema ",
+      "default": 0,
+      "examples": [
+        25
+      ]
+    },
+    "date_created": {
+      "$id": "/properties/date_created",
+      "type": "string",
+      "title": "The Date_created Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-21T16:09:28"
+      ]
+    },
+    "date_created_gmt": {
+      "$id": "/properties/date_created_gmt",
+      "type": "string",
+      "title": "The Date_created_gmt Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-21T19:09:28"
+      ]
+    },
+    "date_modified": {
+      "$id": "/properties/date_modified",
+      "type": "string",
+      "title": "The Date_modified Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-21T16:09:30"
+      ]
+    },
+    "date_modified_gmt": {
+      "$id": "/properties/date_modified_gmt",
+      "type": "string",
+      "title": "The Date_modified_gmt Schema ",
+      "default": "",
+      "examples": [
+        "2017-03-21T19:09:30"
+      ]
+    },
+    "email": {
+      "$id": "/properties/email",
+      "type": "string",
+      "title": "The Email Schema ",
+      "default": "",
+      "examples": [
+        "john.doe@example.com"
+      ]
+    },
+    "first_name": {
+      "$id": "/properties/first_name",
+      "type": "string",
+      "title": "The First_name Schema ",
+      "default": "",
+      "examples": [
+        "John"
+      ]
+    },
+    "last_name": {
+      "$id": "/properties/last_name",
+      "type": "string",
+      "title": "The Last_name Schema ",
+      "default": "",
+      "examples": [
+        "Doe"
+      ]
+    },
+    "role": {
+      "$id": "/properties/role",
+      "type": "string",
+      "title": "The Role Schema ",
+      "default": "",
+      "examples": [
+        "customer"
+      ]
+    },
+    "username": {
+      "$id": "/properties/username",
+      "type": "string",
+      "title": "The Username Schema ",
+      "default": "",
+      "examples": [
+        "john.doe"
+      ]
+    },
+    "billing": {
+      "$id": "/properties/billing",
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "$id": "/properties/billing/properties/first_name",
+          "type": "string",
+          "title": "The First_name Schema ",
+          "default": "",
+          "examples": [
+            "John"
+          ]
+        },
+        "last_name": {
+          "$id": "/properties/billing/properties/last_name",
+          "type": "string",
+          "title": "The Last_name Schema ",
+          "default": "",
+          "examples": [
+            "Doe"
+          ]
+        },
+        "company": {
+          "$id": "/properties/billing/properties/company",
+          "type": "string",
+          "title": "The Company Schema ",
+          "default": "",
+          "examples": [
+            ""
+          ]
+        },
+        "address_1": {
+          "$id": "/properties/billing/properties/address_1",
+          "type": "string",
+          "title": "The Address_1 Schema ",
+          "default": "",
+          "examples": [
+            "969 Market"
+          ]
+        },
+        "address_2": {
+          "$id": "/properties/billing/properties/address_2",
+          "type": "string",
+          "title": "The Address_2 Schema ",
+          "default": "",
+          "examples": [
+            ""
+          ]
+        },
+        "city": {
+          "$id": "/properties/billing/properties/city",
+          "type": "string",
+          "title": "The City Schema ",
+          "default": "",
+          "examples": [
+            "San Francisco"
+          ]
+        },
+        "state": {
+          "$id": "/properties/billing/properties/state",
+          "type": "string",
+          "title": "The State Schema ",
+          "default": "",
+          "examples": [
+            "CA"
+          ]
+        },
+        "postcode": {
+          "$id": "/properties/billing/properties/postcode",
+          "type": "string",
+          "title": "The Postcode Schema ",
+          "default": "",
+          "examples": [
+            "94103"
+          ]
+        },
+        "country": {
+          "$id": "/properties/billing/properties/country",
+          "type": "string",
+          "title": "The Country Schema ",
+          "default": "",
+          "examples": [
+            "US"
+          ]
+        },
+        "email": {
+          "$id": "/properties/billing/properties/email",
+          "type": "string",
+          "title": "The Email Schema ",
+          "default": "",
+          "examples": [
+            "john.doe@example.com"
+          ]
+        },
+        "phone": {
+          "$id": "/properties/billing/properties/phone",
+          "type": "string",
+          "title": "The Phone Schema ",
+          "default": "",
+          "examples": [
+            "(555) 555-5555"
+          ]
+        }
+      }
+    },
+    "shipping": {
+      "$id": "/properties/shipping",
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "$id": "/properties/shipping/properties/first_name",
+          "type": "string",
+          "title": "The First_name Schema ",
+          "default": "",
+          "examples": [
+            "John"
+          ]
+        },
+        "last_name": {
+          "$id": "/properties/shipping/properties/last_name",
+          "type": "string",
+          "title": "The Last_name Schema ",
+          "default": "",
+          "examples": [
+            "Doe"
+          ]
+        },
+        "company": {
+          "$id": "/properties/shipping/properties/company",
+          "type": "string",
+          "title": "The Company Schema ",
+          "default": "",
+          "examples": [
+            ""
+          ]
+        },
+        "address_1": {
+          "$id": "/properties/shipping/properties/address_1",
+          "type": "string",
+          "title": "The Address_1 Schema ",
+          "default": "",
+          "examples": [
+            "969 Market"
+          ]
+        },
+        "address_2": {
+          "$id": "/properties/shipping/properties/address_2",
+          "type": "string",
+          "title": "The Address_2 Schema ",
+          "default": "",
+          "examples": [
+            ""
+          ]
+        },
+        "city": {
+          "$id": "/properties/shipping/properties/city",
+          "type": "string",
+          "title": "The City Schema ",
+          "default": "",
+          "examples": [
+            "San Francisco"
+          ]
+        },
+        "state": {
+          "$id": "/properties/shipping/properties/state",
+          "type": "string",
+          "title": "The State Schema ",
+          "default": "",
+          "examples": [
+            "CA"
+          ]
+        },
+        "postcode": {
+          "$id": "/properties/shipping/properties/postcode",
+          "type": "string",
+          "title": "The Postcode Schema ",
+          "default": "",
+          "examples": [
+            "94103"
+          ]
+        },
+        "country": {
+          "$id": "/properties/shipping/properties/country",
+          "type": "string",
+          "title": "The Country Schema ",
+          "default": "",
+          "examples": [
+            "US"
+          ]
+        }
+      }
+    },
+    "is_paying_customer": {
+      "$id": "/properties/is_paying_customer",
+      "type": "boolean",
+      "title": "The Is_paying_customer Schema ",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "orders_count": {
+      "$id": "/properties/orders_count",
+      "type": "integer",
+      "title": "The Orders_count Schema ",
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "total_spent": {
+      "$id": "/properties/total_spent",
+      "type": "string",
+      "title": "The Total_spent Schema ",
+      "default": "",
+      "examples": [
+        "0.00"
+      ]
+    },
+    "avatar_url": {
+      "$id": "/properties/avatar_url",
+      "type": "string",
+      "title": "The Avatar_url Schema ",
+      "default": "",
+      "examples": [
+        "https://secure.gravatar.com/avatar/8eb1b522f60d11fa897de1dc6351b7e8?s=96"
+      ]
+    },
+    "meta_data": {
+      "$id": "/properties/meta_data",
+      "type": "array"
+    },
+    "_links": {
+      "$id": "/properties/_links",
+      "type": "object",
+      "properties": {
+        "self": {
+          "$id": "/properties/_links/properties/self",
+          "type": "array",
+          "items": {
+            "$id": "/properties/_links/properties/self/items",
+            "type": "object",
+            "properties": {
+              "href": {
+                "$id": "/properties/_links/properties/self/items/properties/href",
+                "type": "string",
+                "title": "The Href Schema ",
+                "default": "",
+                "examples": [
+                  "https://example.com/wp-json/wc/v2/customers/25"
+                ]
+              }
+            }
+          }
+        },
+        "collection": {
+          "$id": "/properties/_links/properties/collection",
+          "type": "array",
+          "items": {
+            "$id": "/properties/_links/properties/collection/items",
+            "type": "object",
+            "properties": {
+              "href": {
+                "$id": "/properties/_links/properties/collection/items/properties/href",
+                "type": "string",
+                "title": "The Href Schema ",
+                "default": "",
+                "examples": [
+                  "https://example.com/wp-json/wc/v2/customers"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

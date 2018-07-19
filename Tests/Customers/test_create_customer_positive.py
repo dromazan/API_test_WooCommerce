@@ -1,8 +1,7 @@
 from Helpers.request import Request
-from Helpers.db_connect import DBConnect
 from Tests.Customers.customer_helpers import *
 from Helpers.helpers import map_response
-import json
+from Helpers.assertions import assert_valid_schema
 
 req = Request()
 q = DBConnect()
@@ -10,28 +9,40 @@ q = DBConnect()
 
 def test_create_customer():
     """
+    http://woocommerce.github.io/woocommerce-rest-api-docs/#create-a-customer
 
-    :return:
+    Create a customer
+    This API helps you to create a new customer.
+
+    HTTP request
+    POST /wp-json/wc/v2/customers
     """
 
+    # getting new customer json
     customer = Customer().data
 
+    # posting new customer
     response = req.post('customers', customer)
 
     status_code = response[0]
     response_body = response[1]
     response_url = response[2]
 
-    # check the response status
+    # checking the response status
     assert status_code == 201, 'Response code is not 201'
+
+    # validate json schema
+    assert_valid_schema(response_body, 'customer.json')
 
     resp_id = response_body['id']
 
+    # mapping response to the request structure
     mapped_response = map_response(customer, response_body)
 
+    # verifying response
     assert mapped_response == customer, 'Requested data doesn\'t match with response data'
 
-    # verify data in DB
+    # verifying data in DB
     fields = ('nickname',
               'first_name',
               'last_name',
@@ -57,6 +68,7 @@ def test_create_customer():
             select meta_key, meta_value from wp43.wp_usermeta where user_id={} and meta_key in {}
             """.format(resp_id, fields)
 
+    # executing select statement
     qresp = q.select('wp43', query)
 
     nickname = qresp[0][1]
@@ -79,22 +91,23 @@ def test_create_customer():
     shipping_postcode = qresp[17][1]
     shipping_country = qresp[18][1]
 
-    assert nickname == customer['username'], 'text'
-    assert first_name == customer['first_name'], 'text'
-    assert last_name == customer['last_name']
-    assert billing_first_name == customer['billing']['first_name']
-    assert billing_last_name == customer['billing']['last_name']
-    assert billing_address_1 == customer['billing']['address_1']
-    assert billing_city == customer['billing']['city']
-    assert billing_state == customer['billing']['state']
-    assert billing_postcode == customer['billing']['postcode']
-    assert billing_country == customer['billing']['country']
-    assert billing_email == customer['billing']['email']
-    assert billing_phone == customer['billing']['phone']
-    assert shipping_first_name == customer['shipping']['first_name']
-    assert shipping_last_name == customer['shipping']['last_name']
-    assert shipping_address_1 == customer['shipping']['address_1']
-    assert shipping_city == customer['shipping']['city']
-    assert shipping_state == customer['shipping']['state']
-    assert shipping_postcode == customer['shipping']['postcode']
-    assert shipping_country == customer['shipping']['country']
+    # verifying data from db and response match
+    assert nickname == customer['username'], 'Username in request and db doesn\'t match'
+    assert first_name == customer['first_name'], 'First name in request and db doesn\'t match'
+    assert last_name == customer['last_name'], 'Last name in request and db doesn\'t match'
+    assert billing_first_name == customer['billing']['first_name'], 'Billing first name in request and db doesn\'t match'
+    assert billing_last_name == customer['billing']['last_name'], 'Billing last name in request and db doesn\'t match'
+    assert billing_address_1 == customer['billing']['address_1'], 'billing address in request and db doesn\'t match'
+    assert billing_city == customer['billing']['city'], 'billing city in request and db doesn\'t match'
+    assert billing_state == customer['billing']['state'], 'billing state in request and db doesn\'t match'
+    assert billing_postcode == customer['billing']['postcode'], 'billing postcode in request and db doesn\'t match'
+    assert billing_country == customer['billing']['country'], 'billing country in request and db doesn\'t match'
+    assert billing_email == customer['billing']['email'], 'billing email in request and db doesn\'t match'
+    assert billing_phone == customer['billing']['phone'], 'billing phone in request and db doesn\'t match'
+    assert shipping_first_name == customer['shipping']['first_name'], 'shipping first name in request and db doesn\'t match'
+    assert shipping_last_name == customer['shipping']['last_name'], 'shilling last name in request and db doesn\'t match'
+    assert shipping_address_1 == customer['shipping']['address_1'], 'shipping address in request and db doesn\'t match'
+    assert shipping_city == customer['shipping']['city'], 'shipping city in request and db doesn\'t match'
+    assert shipping_state == customer['shipping']['state'], 'shipping state in request and db doesn\'t match'
+    assert shipping_postcode == customer['shipping']['postcode'], 'shipping postcode in request and db doesn\'t match'
+    assert shipping_country == customer['shipping']['country'], 'shipping country in request and db doesn\'t match'
