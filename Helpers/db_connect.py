@@ -1,5 +1,7 @@
 import pymysql
 
+# DB Name
+db = 'wp906'
 
 class DBConnect:
 

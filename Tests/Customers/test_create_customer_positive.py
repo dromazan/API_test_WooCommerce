@@ -1,7 +1,7 @@
 from Helpers.helpers import map_response
 from Helpers.assertions import assert_valid_schema
+from Helpers.db_connect import db
 from customer_fixtures import get_customer_json
-from Helpers.global_fixtures import request, db_connect
 import pytest
 
 
@@ -64,11 +64,11 @@ def test_create_customer(get_customer_json, request, db_connect):
               )
 
     query = """
-            select meta_key, meta_value from wp43.wp_usermeta where user_id={} and meta_key in {}
-            """.format(resp_id, fields)
+            select meta_key, meta_value from {}.wp_usermeta where user_id={} and meta_key in {}
+            """.format(db, resp_id, fields)
 
     # executing select statement
-    qresp = db_connect.select('wp43', query)
+    qresp = db_connect.select(db, query)
 
     nickname = qresp[0][1]
     first_name = qresp[1][1]

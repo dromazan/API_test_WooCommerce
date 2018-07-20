@@ -1,7 +1,7 @@
-from product_fixtures import get_random_product_id
-from Helpers.global_fixtures import request, db_connect
 import pytest
 from Helpers.assertions import assert_valid_schema
+from Helpers.db_connect import db
+from product_fixtures import get_random_product_id
 
 
 @pytest.mark.usefixture
@@ -31,10 +31,10 @@ def test_delete_a_product(request, db_connect, get_random_product_id):
 
     # get product data from DB
     query = """
-        select * from wp43.wp_posts where id={}
-        """.format(prod_id)
+        select * from {}.wp_posts where id={}
+        """.format(db, prod_id)
 
     # executing select statement
-    qresp = db_connect.select('wp43', query)
+    qresp = db_connect.select(db, query)
 
     assert not qresp, 'DB select result is not empty, product is not deleted from the DB'

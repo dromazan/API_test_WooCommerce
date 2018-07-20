@@ -1,8 +1,8 @@
-from product_fixtures import *
-from Helpers.global_fixtures import request, db_connect
 from Helpers.helpers import map_response
-import pytest
 from Helpers.assertions import assert_valid_schema
+from Helpers.db_connect import db
+from product_fixtures import get_product_json
+import pytest
 
 
 @pytest.mark.usefixtures
@@ -39,12 +39,12 @@ def test_create_a_product(get_product_json, request, db_connect):
 
     # get product data from DB
     query = """
-    select p.post_title, p.post_type, pm.meta_value from wp43.wp_posts as p join wp43.wp_postmeta as pm 
+    select p.post_title, p.post_type, pm.meta_value from {}.wp_posts as p join {}.wp_postmeta as pm 
     on p.id=pm.post_id where p.id={} and pm.meta_key='_regular_price'
-    """.format(resp_id)
+    """.format(db, db, resp_id)
 
     # executing select statement
-    qresp = db_connect.select('wp43', query)
+    qresp = db_connect.select(db, query)
 
     db_name = qresp[0][0]
     db_price = qresp[0][2]

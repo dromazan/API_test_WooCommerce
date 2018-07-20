@@ -1,8 +1,6 @@
 from Helpers.assertions import assert_valid_schema
-from Helpers.global_fixtures import request, db_connect
+from Helpers.db_connect import db
 from product_fixtures import get_random_product_id
-from Helpers.request import Request
-
 import pytest
 
 
@@ -42,11 +40,11 @@ def test_retrieve_a_product(get_random_product_id, request, db_connect):
         select 
         post_name,
         post_status
-        from wp43.wp_posts where id={}
-        """.format(prod_id)
+        from {}.wp_posts where id={}
+        """.format(db, prod_id)
 
     # executing select statement
-    qresp = db_connect.select('wp43', query)
+    qresp = db_connect.select(db, query)
 
     db_name = qresp[0][0]
     db_status = qresp[0][1]
