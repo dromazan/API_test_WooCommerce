@@ -5,7 +5,7 @@ class Request:
 
     def __init__(self):
         """
-        https://woocommerce.github.io/woocommerce-rest-api-docs/v3.htm
+        http://woocommerce.github.io/woocommerce-rest-api-docs/
         """
         consumer_key = 'ck_86415af47c1a300b9fcf10e8953c27dc8744a8ac'
         consumer_secret = 'cs_df7569b9b893e02f5e96631ff11d6eb32c2d74c3'
@@ -59,6 +59,21 @@ class Request:
         :return:
         """
         response = self.wcapi.delete(endpoint)
+
+        response_code = response.status_code
+        response_body = response.json()
+        response_url = response.url
+
+        return [response_code, response_body, response_url]
+
+    def put(self, endpoint, data):
+        """
+
+        :param data:
+        :param endpoint:
+        :return:
+        """
+        response = self.wcapi.put(endpoint, data)
 
         response_code = response.status_code
         response_body = response.json()

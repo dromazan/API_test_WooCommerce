@@ -1,5 +1,6 @@
 from faker import Faker
 from pytest import fixture
+from Helpers.db_connect import db
 
 
 @fixture
@@ -43,3 +44,35 @@ def get_customer_json():
 
     return data
 
+
+@fixture
+def get_random_customer_id(db_connect):
+
+    query = """
+        SELECT id
+        FROM {}.wp_users
+        WHERE id not in (   SELECT id 
+                            FROM {}.wp_users
+                            WHERE id=1)
+        ORDER BY RAND()  LIMIT 1;
+        """.format(db, db)
+
+    id = db_connect.select(db, query)
+    return id[0][0]
+
+
+@fixture
+def get_customer_update_json():
+    f = Faker()
+    first_name = f.first_name()
+    data = {
+        "first_name": first_name,
+        "billing": {
+            "first_name": first_name
+        },
+        "shipping": {
+            "first_name": first_name
+        }
+    }
+
+    return data
