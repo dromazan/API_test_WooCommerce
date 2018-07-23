@@ -1,4 +1,9 @@
 from woocommerce import API
+import configparser
+from os.path import join, dirname
+
+config = configparser.ConfigParser()
+config.read(join(dirname(__file__), 'config.cfg'))
 
 
 class Request:
@@ -7,14 +12,11 @@ class Request:
         """
         http://woocommerce.github.io/woocommerce-rest-api-docs/
         """
-        consumer_key = 'ck_86415af47c1a300b9fcf10e8953c27dc8744a8ac'
-        consumer_secret = 'cs_df7569b9b893e02f5e96631ff11d6eb32c2d74c3'
-
-        # consumer_key = 'ck_dbad24d509287ff9de167840adf053db5fbdb01d'
-        # consumer_secret = 'cs_1498d14f8568edea0269d118d25c3a808b33d3c7'
+        consumer_key = config['CONNECTION']['consumer_key']
+        consumer_secret = config['CONNECTION']['consumer_secret']
 
         self.wcapi = API(
-            url="http://127.0.0.1/wp",
+            url=config['CONNECTION']['url'],
             consumer_key=consumer_key,
             consumer_secret=consumer_secret,
             wp_api=True,

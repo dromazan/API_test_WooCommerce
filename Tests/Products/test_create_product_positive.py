@@ -1,6 +1,5 @@
 from Helpers.helpers import map_response
 from Helpers.assertions import assert_valid_schema
-from Helpers.db_connect import db
 from product_fixtures import get_product_json
 import pytest
 
@@ -31,7 +30,7 @@ def test_create_a_product(get_product_json, request, db_connect):
     assert_valid_schema(response_body, 'product.json')
 
     # checking the response status
-    assert status_code == 201, 'Response code is not 201'
+    assert status_code == 201, 'Response code is not 201. Response is {}'.format(response_body['message'])
 
     # verifying response
     mapped_response = map_response(product, response_body)
@@ -41,10 +40,10 @@ def test_create_a_product(get_product_json, request, db_connect):
     query = """
     select p.post_title, p.post_type, pm.meta_value from {}.wp_posts as p join {}.wp_postmeta as pm 
     on p.id=pm.post_id where p.id={} and pm.meta_key='_regular_price'
-    """.format(db, db, resp_id)
+    """.format(db_connect.db, db_connect.db, resp_id)
 
     # executing select statement
-    qresp = db_connect.select(db, query)
+    qresp = db_connect.select(query)
 
     db_name = qresp[0][0]
     db_price = qresp[0][2]

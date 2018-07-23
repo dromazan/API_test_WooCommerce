@@ -1,26 +1,36 @@
 import pymysql
+import configparser
+from os.path import join, dirname
 
-# DB Name
-db = 'wp906'
+
+config = configparser.ConfigParser()
+config.read(join(dirname(__file__), 'config.cfg'))
+
 
 class DBConnect:
+
+    db = config['DB']['db']
 
     def __init__(self):
         pass
 
-    def __connect(self, db):
+    def __connect(self):
         """
 
         :param db:
         :return:
         """
 
-        host = '127.0.0.1'
-        conn = pymysql.connect(host=host, port=3306, user='root', passwd='mysql', db=db)
+        host = config['DB']['host']
+        port = int(config['DB']['port'])
+        user = config['DB']['user']
+        passwd = config['DB']['passwd']
+        db = config['DB']['db']
+        conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db)
 
         return conn
 
-    def select(self, db, query):
+    def select(self, query):
         """
 
         :param db:
@@ -29,7 +39,7 @@ class DBConnect:
         """
 
         # create connection
-        conn = self.__connect(db)
+        conn = self.__connect()
         cur = conn.cursor()
 
         # execute query
@@ -48,7 +58,7 @@ class DBConnect:
 
         return all_rows
 
-    def update(self, db, query):
+    def update(self, query):
         """
 
         :param db:
@@ -57,7 +67,7 @@ class DBConnect:
         """
 
         # create connection
-        conn = self.__connect(db)
+        conn = self.__connect()
         cur = conn.cursor()
 
         # execute query

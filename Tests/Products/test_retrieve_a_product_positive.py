@@ -1,5 +1,4 @@
 from Helpers.assertions import assert_valid_schema
-from Helpers.db_connect import db
 from product_fixtures import get_random_product_id
 import pytest
 
@@ -24,16 +23,16 @@ def test_retrieve_a_product(get_random_product_id, request, db_connect):
     response = request.get('products/{}'.format(prod_id))
 
     status_code = response[0]
-    response_data = response[1]
+    response_body = response[1]
 
     # verifying status code
-    assert status_code == 200, 'Status code is not 200'
+    assert status_code == 200, 'Response code is not 201. Response is {}'.format(response_body['message'])
 
     # validate json schema
-    assert_valid_schema(response_data, 'product.json')
+    assert_valid_schema(response_body, 'product.json')
 
-    resp_name = response_data['name'].lower()
-    resp_status = response_data['status'].lower()
+    resp_name = response_body['name'].lower()
+    resp_status = response_body['status'].lower()
 
     # get product data from DB
     query = """
@@ -41,10 +40,10 @@ def test_retrieve_a_product(get_random_product_id, request, db_connect):
         post_name,
         post_status
         from {}.wp_posts where id={}
-        """.format(db, prod_id)
+        """.format(db_connect.db, prod_id)
 
     # executing select statement
-    qresp = db_connect.select(db, query)
+    qresp = db_connect.select(query)
 
     db_name = qresp[0][0]
     db_status = qresp[0][1]

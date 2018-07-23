@@ -1,6 +1,5 @@
 from Helpers.helpers import map_response
 from Helpers.assertions import assert_valid_schema
-from Helpers.db_connect import db
 from customer_fixtures import get_customer_json
 import pytest
 
@@ -28,7 +27,7 @@ def test_create_customer(get_customer_json, request, db_connect):
     response_url = response[2]
 
     # checking the response status
-    assert status_code == 201, 'Response code is not 201'
+    assert status_code == 201, 'Response code is not 201. Response is {}'.format(response_body['message'])
 
     # validate json schema
     assert_valid_schema(response_body, 'customer.json')
@@ -65,10 +64,10 @@ def test_create_customer(get_customer_json, request, db_connect):
 
     query = """
             select meta_key, meta_value from {}.wp_usermeta where user_id={} and meta_key in {}
-            """.format(db, resp_id, fields)
+            """.format(db_connect.db, resp_id, fields)
 
     # executing select statement
-    qresp = db_connect.select(db, query)
+    qresp = db_connect.select(query)
 
     nickname = qresp[0][1]
     first_name = qresp[1][1]

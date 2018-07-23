@@ -1,7 +1,6 @@
 from faker import Faker
 import random
 from pytest import fixture, mark
-from Helpers.db_connect import db
 
 
 @fixture
@@ -27,8 +26,8 @@ def get_random_product_id(db_connect):
     FROM {}.wp_posts
     WHERE post_type='product'
     ORDER BY RAND() LIMIT 1;
-    """.format(db)
+    """.format(db_connect.db)
 
-    id = db_connect.select(db, query)
+    id = db_connect.select(query)
     return id[0][0]
 

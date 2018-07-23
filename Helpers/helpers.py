@@ -1,4 +1,4 @@
-
+# mapping response json with all keys to the request json, which can contain less number of keys
 def map_response(request, response):
     mapped_response = {}
     for key in request.keys():

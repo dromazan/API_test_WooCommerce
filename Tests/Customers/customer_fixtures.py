@@ -1,6 +1,5 @@
 from faker import Faker
 from pytest import fixture
-from Helpers.db_connect import db
 
 
 @fixture
@@ -55,9 +54,9 @@ def get_random_customer_id(db_connect):
                             FROM {}.wp_users
                             WHERE id=1)
         ORDER BY RAND()  LIMIT 1;
-        """.format(db, db)
+        """.format(db_connect.db, db_connect.db)
 
-    id = db_connect.select(db, query)
+    id = db_connect.select(query)
     return id[0][0]
 
 
