@@ -5,6 +5,9 @@ from pytest import fixture, mark
 
 @fixture
 def get_product_json():
+    """"
+    Returns product json
+    """
     p_type = ['simple', 'grouped', 'external', 'variable']
     f = Faker()
     data = {
@@ -20,6 +23,12 @@ def get_product_json():
 @fixture
 @mark.usefixture
 def get_random_product_id(db_connect):
+    """
+    Getting random product id
+
+    :param db_connect: global fixture, DB connection
+    :return: id
+    """
 
     query = """
     SELECT ID

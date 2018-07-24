@@ -46,6 +46,12 @@ def get_customer_json():
 
 @fixture
 def get_random_customer_id(db_connect):
+    """
+    Getting random product id from DB
+
+    :param db_connect: global fixture which returns db connection
+    :return: id
+    """
 
     query = """
         SELECT id
@@ -62,6 +68,11 @@ def get_random_customer_id(db_connect):
 
 @fixture
 def get_customer_update_json():
+    """
+    Getting json for PUT request to update customer
+
+    :return: data dictionary
+    """
     f = Faker()
     first_name = f.first_name()
     data = {

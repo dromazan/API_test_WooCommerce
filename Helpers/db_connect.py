@@ -16,9 +16,8 @@ class DBConnect:
 
     def __connect(self):
         """
-
-        :param db:
-        :return:
+        Establish database connection
+        :return: connection
         """
 
         host = config['DB']['host']
@@ -32,10 +31,9 @@ class DBConnect:
 
     def select(self, query):
         """
-
-        :param db:
-        :param query:
-        :return:
+        Performs SELECT SQL statement with provided query
+        :param query: query
+        :return: all rows
         """
 
         # create connection
@@ -60,10 +58,9 @@ class DBConnect:
 
     def update(self, query):
         """
-
-        :param db:
-        :param query:
-        :return:
+        Performs UPDATE SQL statement with provided query
+        :param query: query
+        :return: execution result
         """
 
         # create connection
