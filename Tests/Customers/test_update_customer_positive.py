@@ -23,7 +23,7 @@ def test_update_customer(get_random_customer_id, get_customer_update_json, reque
     c_id = get_random_customer_id
 
     # posting new customer
-    response = request.put('customers/{}'.format(c_id), customer)
+    response = request.put(f'customers/{c_id}', customer)
 
     status_code = response[0]
     response_body = response[1]
@@ -31,7 +31,7 @@ def test_update_customer(get_random_customer_id, get_customer_update_json, reque
     print(response_url)
 
     # checking the response status
-    assert status_code == 200, 'Response code is not 200. Response is {}'.format(response_body['message'])
+    assert status_code == 200, f"Response code is not 200. Response is {response_body['message']}"
 
     # validate json schema
     assert_valid_schema(response_body, 'customer.json')
@@ -51,9 +51,9 @@ def test_update_customer(get_random_customer_id, get_customer_update_json, reque
               'shipping_first_name',
               )
 
-    query = """
-            select meta_key, meta_value from {}.wp_usermeta where user_id={} and meta_key in {}
-            """.format(db_connect.db, c_id, fields)
+    query = f'select meta_key, meta_value ' \
+            f'from {db_connect.db}.wp_usermeta ' \
+            f'where user_id={c_id} and meta_key in {fields}'
 
     # executing select statement
     qresp = db_connect.select(query)
@@ -63,7 +63,12 @@ def test_update_customer(get_random_customer_id, get_customer_update_json, reque
     shipping_first_name = qresp[2][1]
 
     # verifying data from db and response match
-    assert first_name == customer['first_name'], 'First name in request and db doesn\'t match'
-    assert billing_first_name == customer['billing']['first_name'], 'Billing first name in request and db doesn\'t match'
-    assert shipping_first_name == customer['shipping']['first_name'], 'shipping first name in request and db doesn\'t match'
+    assert first_name == customer['first_name'], \
+        'First name in request and db doesn\'t match'
+
+    assert billing_first_name == customer['billing']['first_name'], \
+        'Billing first name in request and db doesn\'t match'
+
+    assert shipping_first_name == customer['shipping']['first_name'], \
+        'shipping first name in request and db doesn\'t match'
 

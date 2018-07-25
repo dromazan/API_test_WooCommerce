@@ -62,9 +62,12 @@ def test_create_customer(get_customer_json, request, db_connect):
               'shipping_country'
               )
 
-    query = """
-            select meta_key, meta_value from {}.wp_usermeta where user_id={} and meta_key in {}
-            """.format(db_connect.db, resp_id, fields)
+    query = f"""
+            select meta_key, meta_value 
+            from {db_connect.db}.wp_usermeta 
+            where user_id={resp_id} 
+            and meta_key in {fields}
+            """
 
     # executing select statement
     qresp = db_connect.select(query)

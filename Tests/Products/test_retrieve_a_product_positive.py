@@ -20,13 +20,13 @@ def test_retrieve_a_product(get_random_product_id, request, db_connect):
     prod_id = get_random_product_id
 
     # getting product by id
-    response = request.get('products/{}'.format(prod_id))
+    response = request.get(f'products/{prod_id}')
 
     status_code = response[0]
     response_body = response[1]
 
     # verifying status code
-    assert status_code == 200, 'Response code is not 201. Response is {}'.format(response_body['message'])
+    assert status_code == 200, f"Response code is not 201. Response is {response_body['message']}"
 
     # validate json schema
     assert_valid_schema(response_body, 'product.json')
@@ -35,12 +35,10 @@ def test_retrieve_a_product(get_random_product_id, request, db_connect):
     resp_status = response_body['status'].lower()
 
     # get product data from DB
-    query = """
-        select 
-        post_name,
-        post_status
-        from {}.wp_posts where id={}
-        """.format(db_connect.db, prod_id)
+    query = f"""
+        SELECT post_name, post_status
+        FROM {db_connect.db}.wp_posts where id={prod_id}
+        """
 
     # executing select statement
     qresp = db_connect.select(query)

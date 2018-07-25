@@ -30,17 +30,21 @@ def test_create_a_product(get_product_json, request, db_connect):
     assert_valid_schema(response_body, 'product.json')
 
     # checking the response status
-    assert status_code == 201, 'Response code is not 201. Response is {}'.format(response_body['message'])
+    assert status_code == 201, f"Response code is not 201. Response is {response_body['message']}"
 
     # verifying response
     mapped_response = map_response(product, response_body)
     assert product == mapped_response, 'Requested data doesn\'t match with response data'
 
     # get product data from DB
-    query = """
-    select p.post_title, p.post_type, pm.meta_value from {}.wp_posts as p join {}.wp_postmeta as pm 
-    on p.id=pm.post_id where p.id={} and pm.meta_key='_regular_price'
-    """.format(db_connect.db, db_connect.db, resp_id)
+    query = f"""
+    SELECT p.post_title, p.post_type, pm.meta_value 
+    FROM {db_connect.db}.wp_posts as p 
+    JOIN {db_connect.db}.wp_postmeta as pm 
+    ON p.id=pm.post_id 
+    WHERE p.id={resp_id} 
+    AND pm.meta_key='_regular_price'
+    """
 
     # executing select statement
     qresp = db_connect.select(query)

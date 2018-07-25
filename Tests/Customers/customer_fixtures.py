@@ -4,20 +4,20 @@ from pytest import fixture
 
 @fixture
 def get_customer_json():
-    f = Faker()
+    faker = Faker()
 
     billing = {
-        "first_name": f.first_name(),
-        "last_name": f.last_name(),
+        "first_name": faker.first_name(),
+        "last_name": faker.last_name(),
         "company": "",
-        "address_1": f.street_address(),
+        "address_1": faker.street_address(),
         "address_2": "",
-        "city": f.city(),
-        "state": f.state_abbr(),
-        "postcode": f.postalcode(),
-        "country": f.country_code(),
-        "email": f.email(),
-        "phone": f.phone_number()
+        "city": faker.city(),
+        "state": faker.state_abbr(),
+        "postcode": faker.postalcode(),
+        "country": faker.country_code(),
+        "email": faker.email(),
+        "phone": faker.phone_number()
     }
 
     shipping = {
@@ -36,7 +36,7 @@ def get_customer_json():
         "email": billing['email'],
         "first_name": billing['first_name'],
         "last_name": billing['last_name'],
-        "username": f.user_name(),
+        "username": faker.user_name(),
         "billing": billing,
         "shipping": shipping
     }
@@ -53,14 +53,10 @@ def get_random_customer_id(db_connect):
     :return: id
     """
 
-    query = """
-        SELECT id
-        FROM {}.wp_users
-        WHERE id not in (   SELECT id 
-                            FROM {}.wp_users
-                            WHERE id=1)
-        ORDER BY RAND()  LIMIT 1;
-        """.format(db_connect.db, db_connect.db)
+    query = f"""SELECT id 
+    FROM {db_connect.db}.wp_users 
+    WHERE id not in (SELECT id FROM {db_connect.db}.wp_users WHERE id=1) 
+    ORDER BY RAND() LIMIT 1;"""
 
     id = db_connect.select(query)
     return id[0][0]
