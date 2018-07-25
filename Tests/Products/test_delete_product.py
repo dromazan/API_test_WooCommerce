@@ -17,21 +17,21 @@ def test_delete_a_product(request, db_connect, get_random_product_id):
     prod_id = get_random_product_id
 
     # getting product by id
-    response = request.delete('products/{}?force=true'.format(prod_id))
+    response = request.delete(f'products/{prod_id}?force=true')
 
     status_code = response[0]
     response_body = response[1]
 
     # verifying status code
-    assert status_code == 200, 'Response code is not 200. Response is {}'.format(response_body['message'])
+    assert status_code == 200, f"Response code is not 200. Response is {response_body['message']}"
 
     # validate json schema
     assert_valid_schema(response_body, 'product.json')
 
     # get product data from DB
-    query = """
-        select * from {}.wp_posts where id={}
-        """.format(db_connect.db, prod_id)
+    query = f"""
+        SELECT * FROM {db_connect.db}.wp_posts WHERE id={prod_id}
+        """
 
     # executing select statement
     qresp = db_connect.select(query)
